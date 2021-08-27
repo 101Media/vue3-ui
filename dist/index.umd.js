@@ -1,5 +1,14 @@
-module.exports =
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("vue"));
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["index"] = factory(require("vue"));
+	else
+		root["index"] = factory(root["Vue"]);
+})((typeof self !== 'undefined' ? self : this), function(__WEBPACK_EXTERNAL_MODULE__8bbf__) {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -17413,7 +17422,7 @@ module.exports = function(module) {
 /***/ "8bbf":
 /***/ (function(module, exports) {
 
-module.exports = require("vue");
+module.exports = __WEBPACK_EXTERNAL_MODULE__8bbf__;
 
 /***/ }),
 
@@ -24646,4 +24655,5 @@ module.exports = g;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=vue3-ui.common.js.map
+});
+//# sourceMappingURL=index.umd.js.map

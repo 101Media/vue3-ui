@@ -6,8 +6,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve('dist'),
-        filename: 'index.js',
-        libraryTarget: 'commonjs2',
+        filename: 'ui.js',
     },
     module: {
         rules: [
