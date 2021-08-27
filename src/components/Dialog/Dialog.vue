@@ -65,10 +65,12 @@ export default {
         }
     },
     mounted() {
-        this.modalInstance = new Modal(document.getElementById('confirm-modal'), {
-            keyboard: false
+        this.$nextTick(() => {
+            this.modalInstance = new Modal(document.getElementById('confirm-modal'), {
+                keyboard: false
+            })
+            this.modalInstance.show()
         })
-        this.modalInstance.show()
     },
 }
 </script>

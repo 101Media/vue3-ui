@@ -1,6 +1,6 @@
 {
     "name": "@101media/vue3-ui",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "homepage": "https://101media.nl",
     "description": "Lightweight UI components for Vue.js based on BS5",
     "author": "Tom Hermsen <tom@101media.nl>",
