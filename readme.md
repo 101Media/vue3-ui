@@ -1,5 +1,7 @@
 # Vue3-UI
 
+Vue3-UI is a package that implements some default UI elements for Bootstrap 5.
+
 ## Installation
 
 Using npm:
