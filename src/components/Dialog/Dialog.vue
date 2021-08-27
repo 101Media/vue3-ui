@@ -6,9 +6,7 @@
                     <h5 class="modal-title">{{ title }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    {{ message }}
-                </div>
+                <div class="modal-body" v-html="message"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn" :class="cancelClass" data-bs-dismiss="modal" @click="$emit('confirm', false)" v-if="canCancel">
                         {{ cancelText }}
