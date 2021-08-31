@@ -17493,7 +17493,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: /usr/local/lib/node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--5!/usr/local/lib/node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!/usr/local/lib/node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/Dialog/Dialog.vue?vue&type=template&id=1a2e9c54
+// CONCATENATED MODULE: /usr/local/lib/node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--5!/usr/local/lib/node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!/usr/local/lib/node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/Dialog/Dialog.vue?vue&type=template&id=f6988842
 
 
 const _hoisted_1 = {
@@ -17501,29 +17501,33 @@ const _hoisted_1 = {
   class: "modal fade show",
   tabindex: "-1"
 }
-const _hoisted_2 = { class: "modal-dialog" }
-const _hoisted_3 = { class: "modal-content" }
-const _hoisted_4 = { class: "modal-header" }
-const _hoisted_5 = { class: "modal-title" }
-const _hoisted_6 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("button", {
+const _hoisted_2 = { class: "modal-content" }
+const _hoisted_3 = { class: "modal-header" }
+const _hoisted_4 = { class: "modal-title" }
+const _hoisted_5 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("button", {
   type: "button",
   class: "btn-close",
   "data-bs-dismiss": "modal",
   "aria-label": "Close"
 }, null, -1)
-const _hoisted_7 = { class: "modal-body" }
-const _hoisted_8 = { class: "modal-footer" }
+const _hoisted_6 = ["innerHTML"]
+const _hoisted_7 = { class: "modal-footer" }
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_1, [
-    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_2, [
-      Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_3, [
-        Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_4, [
-          Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("h5", _hoisted_5, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.title), 1),
-          _hoisted_6
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
+      class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])(["modal-dialog ", $props.centered ? 'modal-dialog-centered' : ''])
+    }, [
+      Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_2, [
+        Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_3, [
+          Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("h5", _hoisted_4, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.title), 1),
+          _hoisted_5
         ]),
-        Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_7, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.message), 1),
-        Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_8, [
+        Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
+          class: "modal-body",
+          innerHTML: $props.message
+        }, null, 8, _hoisted_6),
+        Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_7, [
           ($props.canCancel)
             ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("button", {
                 key: 0,
@@ -17541,10 +17545,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.confirmText), 3)
         ])
       ])
-    ])
+    ], 2)
   ]))
 }
-// CONCATENATED MODULE: ./src/components/Dialog/Dialog.vue?vue&type=template&id=1a2e9c54
+// CONCATENATED MODULE: ./src/components/Dialog/Dialog.vue?vue&type=template&id=f6988842
 
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/enums.js
 var enums_top = 'top';
@@ -24514,6 +24518,10 @@ defineJQueryPlugin(Toast);
         canCancel: {
             type: Boolean,
             default: true,
+        },
+        centered: {
+            type: Boolean,
+            default: true,
         }
     },
     data() {
@@ -24601,7 +24609,6 @@ const Ui = {
 }
 
 /* harmony default export */ var ui = (Ui);
-
 // CONCATENATED MODULE: ./src/index.js
 
 
