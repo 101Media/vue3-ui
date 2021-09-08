@@ -17433,6 +17433,11 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__8bbf__;
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "Dialog", function() { return /* reexport */ components_Dialog; });
+__webpack_require__.d(__webpack_exports__, "Button", function() { return /* reexport */ components_Button; });
+__webpack_require__.d(__webpack_exports__, "Config", function() { return /* reexport */ Plugin; });
+
 // NAMESPACE OBJECT: ./node_modules/@popperjs/core/lib/index.js
 var lib_namespaceObject = {};
 __webpack_require__.r(lib_namespaceObject);
@@ -17475,6 +17480,12 @@ __webpack_require__.d(lib_namespaceObject, "createPopperBase", function() { retu
 __webpack_require__.d(lib_namespaceObject, "createPopper", function() { return popper_createPopper; });
 __webpack_require__.d(lib_namespaceObject, "createPopperLite", function() { return popper_lite_createPopper; });
 
+// NAMESPACE OBJECT: ./src/components/index.js
+var components_namespaceObject = {};
+__webpack_require__.r(components_namespaceObject);
+__webpack_require__.d(components_namespaceObject, "Dialog", function() { return components_Dialog; });
+__webpack_require__.d(components_namespaceObject, "Button", function() { return components_Button; });
+
 // CONCATENATED MODULE: /usr/local/lib/node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
 
@@ -17502,7 +17513,39 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: /usr/local/lib/node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--5!/usr/local/lib/node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!/usr/local/lib/node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/Dialog/Dialog.vue?vue&type=template&id=f6988842
+// EXTERNAL MODULE: ./node_modules/lodash/lodash.js
+var lodash = __webpack_require__("2ef0");
+
+// CONCATENATED MODULE: ./src/utils/useProgrammatic.js
+const useProgrammatic_ui = {};
+
+function useProgrammatic_addProgrammatic(property, component) {
+    useProgrammatic_ui[property] = component;
+}
+
+function useProgrammatic() {
+    return {ui: useProgrammatic_ui, addProgrammatic: useProgrammatic_addProgrammatic};
+}
+// CONCATENATED MODULE: ./src/utils/plugin.js
+
+
+const registerPlugin = (app, plugin) => {
+    app.use(plugin);
+}
+
+const registerComponent = (app, component) => {
+    app.component(component.name, component);
+}
+
+const registerComponentProgrammatic = (app, property, component) => {
+    const {ui, addProgrammatic} = useProgrammatic();
+
+    addProgrammatic(property, component);
+
+    if (!(app._context.provides && app._context.provides.ui)) app.provide('ui', ui);
+    if (!app.config.globalProperties.$ui) app.config.globalProperties.$ui = ui;
+}
+// CONCATENATED MODULE: /usr/local/lib/node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--5!/usr/local/lib/node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!/usr/local/lib/node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/Dialog/Dialog.vue?vue&type=template&id=5acd7f3e
 
 
 const _hoisted_1 = {
@@ -17557,7 +17600,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2)
   ]))
 }
-// CONCATENATED MODULE: ./src/components/Dialog/Dialog.vue?vue&type=template&id=f6988842
+// CONCATENATED MODULE: ./src/components/Dialog/Dialog.vue?vue&type=template&id=5acd7f3e
 
 // CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/enums.js
 var enums_top = 'top';
@@ -24557,47 +24600,77 @@ defineJQueryPlugin(Toast);
 Dialogvue_type_script_lang_js.render = render
 
 /* harmony default export */ var Dialog = (Dialogvue_type_script_lang_js);
-// EXTERNAL MODULE: ./node_modules/lodash/lodash.js
-var lodash = __webpack_require__("2ef0");
+// CONCATENATED MODULE: ./src/utils/config.js
 
+
+let config_config = {
+    //
+}
+
+const config_setOptions = (options) => {
+    config_config = options
+}
+
+const getOptions = () => {
+    return config_config
+}
+
+let VueInstance;
+
+const setVueInstance = (Vue) => {
+    VueInstance = Vue
+}
+
+const Programmatic = {
+    getOptions,
+    setOptions(options) {
+        config_setOptions(Object(lodash["merge"])(getOptions(), options))
+    }
+}
+
+const Plugin = {
+    install(Vue, options = {}) {
+        setVueInstance(Vue)
+        config_setOptions(Object(lodash["merge"])(getOptions(), options))
+    }
+}
 // CONCATENATED MODULE: ./src/components/Dialog/index.js
 
 
 
 
-function Dialog_open(data) {
+
+
+let localVueInstance;
+
+function Dialog_open(options) {
     return new Promise((resolve) => {
-        let DialogComponent = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createApp"])(Dialog, {
-            message: data.message,
-            title: data.title,
-            confirmClass: data.confirmClass,
-            confirmText: data.confirmText,
-            cancelClass: data.cancelClass,
-            cancelText: data.cancelText,
-            canCancel: data.canCancel,
+        const app = localVueInstance || VueInstance
+        let defaultOptions = app.config.globalProperties.$ui.config.getOptions().dialog || {};
+        const defaultProps = Object(lodash["merge"])(defaultOptions, {
+            programmatic: true,
             onConfirm(confirmed) {
                 if (confirmed) {
                     resolve(confirmed);
                 }
                 DialogComponent.unmount();
             }
-        })
+        });
 
-        const wrapper = document.createElement("div")
-        DialogComponent.mount(wrapper)
-        document.body.appendChild(wrapper)
+        const props = Object(lodash["merge"])(defaultOptions, options);
+
+        let DialogComponent = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createApp"])(Dialog, props)
+
+        const wrapper = document.createElement('div');
+        DialogComponent.mount(wrapper);
+        document.body.appendChild(wrapper);
     })
 }
 
-const Dialog_index = {
+const DialogProgrammatic = {
     alert(params) {
-        if (typeof params === 'string') {
-            params = {
-                message: params
-            }
-        }
         const defaultParam = {
-            canCancel: false
+            canCancel: false,
         }
         const data = Object(lodash["merge"])(defaultParam, params)
         return Dialog_open(data)
@@ -24606,26 +24679,112 @@ const Dialog_index = {
         const defaultParam = {}
         const data = Object(lodash["merge"])(defaultParam, params)
         return Dialog_open(data)
+    }
+}
+
+
+/* harmony default export */ var components_Dialog = ({
+    install(app) {
+        localVueInstance = app
+        registerComponent(app, Dialog);
+        registerComponentProgrammatic(app, 'dialog', DialogProgrammatic)
+    }
+});
+
+
+// CONCATENATED MODULE: /usr/local/lib/node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--5!/usr/local/lib/node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!/usr/local/lib/node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/Button/Button.vue?vue&type=template&id=393033c1
+
+
+const Buttonvue_type_template_id_393033c1_hoisted_1 = ["type"]
+
+function Buttonvue_type_template_id_393033c1_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", {
+    class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])($props.block ? 'd-grid gap-2' : '')
+  }, [
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("button", {
+      class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])(["btn", $props.class]),
+      type: $props.type
+    }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.text), 11, Buttonvue_type_template_id_393033c1_hoisted_1)
+  ], 2))
+}
+// CONCATENATED MODULE: ./src/components/Button/Button.vue?vue&type=template&id=393033c1
+
+// CONCATENATED MODULE: /usr/local/lib/node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!/usr/local/lib/node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/components/Button/Button.vue?vue&type=script&lang=js
+
+
+/* harmony default export */ var Buttonvue_type_script_lang_js = ({
+    name: 'UButton',
+    props: {
+        type: {
+            default: 'button',
+            type: String,
+        },
+        class: {
+            default: 'btn-primary',
+            required: false,
+            type: String,
+        },
+        block: {
+            default: false,
+            type: Boolean
+        },
+        text: String
+    }
+
+});
+
+// CONCATENATED MODULE: ./src/components/Button/Button.vue?vue&type=script&lang=js
+ 
+// CONCATENATED MODULE: ./src/components/Button/Button.vue
+
+
+
+Buttonvue_type_script_lang_js.render = Buttonvue_type_template_id_393033c1_render
+
+/* harmony default export */ var Button_Button = (Buttonvue_type_script_lang_js);
+// CONCATENATED MODULE: ./src/components/Button/index.js
+
+
+
+
+/* harmony default export */ var components_Button = ({
+    install(app) {
+        registerComponent(app, Button_Button)
     },
-}
-/* harmony default export */ var components_Dialog = (Dialog_index);
-
-// CONCATENATED MODULE: ./src/ui.js
+});
 
 
-const Ui = {
-    dialog: components_Dialog,
-}
+// CONCATENATED MODULE: ./src/components/index.js
 
-/* harmony default export */ var ui = (Ui);
+
+
+
 // CONCATENATED MODULE: ./src/index.js
 
 
-/* harmony default export */ var src_0 = ({
-    install: (app) => {
-        app.config.globalProperties.$ui = ui
-    },
-});
+
+
+
+
+const Ui = {
+    install(app, options = {}) {
+        setVueInstance(app);
+        const defaultConfig = getOptions();
+
+        config_setOptions(Object(lodash["merge"])(defaultConfig, options));
+
+        for (const componentKey in components_namespaceObject) {
+            console.log(componentKey);
+            registerPlugin(app, components_namespaceObject[componentKey]);
+        }
+
+        registerComponentProgrammatic(app, 'config', Programmatic)
+
+        app.provide('ui', app.config.globalProperties.$ui);
+    }
+}
+/* harmony default export */ var src_0 = (Ui);
+
 
 // CONCATENATED MODULE: /usr/local/lib/node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 

@@ -38,7 +38,46 @@ app.use(Ui)
 
 ```
 
+## Configuration
+
+Default configuration can be set when initializing plugin.
+
+``` 
+import { createApp } from 'vue';
+import Ui from "@101media/vue3-ui";
+
+const UiConfig = {
+    dialog:{
+        cancelClass: 'btn-danger',
+        confirmClass: 'btn-success',
+        center: true,
+    }
+}
+
+const app = createApp({
+  //
+});
+
+app.use(Ui, UiConfig)
+ ```
+
 ## Components
+
+### Button
+
+Show a button.
+
+`String type`
+The button type
+
+`String class`
+The button class
+
+`Boolean block`
+Whether the button should be displayed as block.
+
+`String text`
+The button text
 
 ### Dialog
 

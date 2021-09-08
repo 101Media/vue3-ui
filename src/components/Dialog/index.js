@@ -1,40 +1,39 @@
-import Dialog from './Dialog.vue';
 import {createApp} from "vue"
 import {merge} from 'lodash';
+import {registerComponent, registerComponentProgrammatic} from "../../utils/plugin";
+import Dialog from './Dialog'
+import {VueInstance} from "../../utils/config";
 
-function open(data) {
+let localVueInstance;
+
+function open(options) {
     return new Promise((resolve) => {
-        let DialogComponent = createApp(Dialog, {
-            message: data.message,
-            title: data.title,
-            confirmClass: data.confirmClass,
-            confirmText: data.confirmText,
-            cancelClass: data.cancelClass,
-            cancelText: data.cancelText,
-            canCancel: data.canCancel,
+        const app = localVueInstance || VueInstance
+        let defaultOptions = app.config.globalProperties.$ui.config.getOptions().dialog || {};
+        const defaultProps = merge(defaultOptions, {
+            programmatic: true,
             onConfirm(confirmed) {
                 if (confirmed) {
                     resolve(confirmed);
                 }
                 DialogComponent.unmount();
             }
-        })
+        });
 
-        const wrapper = document.createElement("div")
-        DialogComponent.mount(wrapper)
-        document.body.appendChild(wrapper)
+        const props = merge(defaultOptions, options);
+
+        let DialogComponent = createApp(Dialog, props)
+
+        const wrapper = document.createElement('div');
+        DialogComponent.mount(wrapper);
+        document.body.appendChild(wrapper);
     })
 }
 
-const index = {
+const DialogProgrammatic = {
     alert(params) {
-        if (typeof params === 'string') {
-            params = {
-                message: params
-            }
-        }
         const defaultParam = {
-            canCancel: false
+            canCancel: false,
         }
         const data = merge(defaultParam, params)
         return open(data)
@@ -43,6 +42,19 @@ const index = {
         const defaultParam = {}
         const data = merge(defaultParam, params)
         return open(data)
-    },
+    }
 }
-export default index;
+
+
+export default {
+    install(app) {
+        localVueInstance = app
+        registerComponent(app, Dialog);
+        registerComponentProgrammatic(app, 'dialog', DialogProgrammatic)
+    }
+}
+
+export {
+    DialogProgrammatic,
+    Dialog as UDialog
+}
