@@ -12,7 +12,6 @@ const Ui = {
         setOptions(merge(defaultConfig, options));
 
         for (const componentKey in components) {
-            console.log(componentKey);
             registerPlugin(app, components[componentKey]);
         }
 
