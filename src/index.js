@@ -16,8 +16,6 @@ const Ui = {
         }
 
         registerComponentProgrammatic(app, 'config', ConfigProgrammatic)
-
-        app.provide('ui', app.config.globalProperties.$ui);
     }
 }
 export default Ui;

@@ -63,6 +63,8 @@ app.use(Ui, UiConfig)
 
 ## Components
 
+All components support default HTML attributes.
+
 ### Button
 
 Show a button.
@@ -78,6 +80,44 @@ Whether the button should be displayed as block.
 
 `String text`
 The button text
+
+## Checkbox
+
+Show a checkbox.
+
+`String type`
+Define the input type.
+
+`Boolean switches`
+Whether the checkbox should be a switch
+
+`Array|Boolean checked`
+whether the checkbox is checked
+
+`Any value`
+The checkbox value
+
+`String formClass`
+The class of the form group
+
+## Input
+
+Show an input.
+
+`String id`
+The component ID
+
+`String error`
+The error message
+
+`Boolean group`
+Whether the input should be grouped
+
+`String groupClass`
+The class for the form group
+
+`String type`
+The input type
 
 ### Dialog
 
