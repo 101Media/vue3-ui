@@ -24,7 +24,7 @@ $ yarn add @101media/vue3-ui
 
 ## Usage
 
-```
+```js
 import { createApp } from 'vue';
 import Ui from "@101media/vue3-ui";
 
@@ -42,7 +42,7 @@ app.use(Ui)
 
 Default configuration can be set when initializing plugin.
 
-``` 
+```js 
 import { createApp } from 'vue';
 import Ui from "@101media/vue3-ui";
 
@@ -81,7 +81,7 @@ Whether the button should be displayed as block.
 `String text`
 The button text
 
-## Checkbox
+### Checkbox
 
 Show a checkbox.
 
@@ -100,7 +100,7 @@ The checkbox value
 `String formClass`
 The class of the form group
 
-## Input
+### Input
 
 Show an input.
 
@@ -119,6 +119,17 @@ The class for the form group
 `String type`
 The input type
 
+```js
+<UInput placeholder="Example input" v-model="text" id="TextInput1"></UInput>
+```
+```html
+<div class="form-group" placeholder="Example input">
+  
+  <input placeholder="Example input" class="form-control" type="text">
+  
+</div>
+```
+
 ### Dialog
 
 Dialog spawns a modal to confirm an action.
@@ -129,7 +140,7 @@ So `action.execute()` will only be executed once the user confrims the dialog.
 
 #### confirm
 
-```
+```js
 this.$ui.dialog.confirm({
     message: 'Continue on this task?',
 }).then(() => action.execute())
@@ -137,7 +148,7 @@ this.$ui.dialog.confirm({
 
 #### Alert
 
-```
+```js
 this.$ui.dialog.alert({
     message: 'Continue on this task?',
 }).then(() => action.execute())
