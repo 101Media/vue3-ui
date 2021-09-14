@@ -1,5 +1,5 @@
 <template>
-    <div class="form-group" v-if="group === true">
+    <div class="input-group mb-3" v-if="group === true">
         <label v-if="$slots.default" class="form-label" :for="modelValue">
             <slot></slot>
         </label>
@@ -26,7 +26,6 @@
 
     <div v-else>
 
-        <slot name="prepend"></slot>
         <input
             :id="modelValue"
             v-bind="{ ...$attrs, class: null }"
@@ -35,7 +34,6 @@
             :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)"
             ref="input"/>
-        <slot name="append"></slot>
     </div>
 
 </template>
