@@ -4,7 +4,7 @@
             <slot></slot>
         </label>
 
-        <span class="input-group-text" :id="modelValue">
+        <span class="input-group-text" v-if="!!($slots.prepend)">
         <slot name="prepend"></slot>
         </span>
 
@@ -18,7 +18,7 @@
             @input="$emit('update:modelValue', $event.target.value)" ref="input"/>
         <div v-if="error" class="invalid-feedback">{{ error }}</div>
 
-        <span class="input-group-text" :id="modelValue">
+        <span class="input-group-text" v-if="!!($slots.prepend)">
         <slot name="append"></slot>
         </span>
 
@@ -66,7 +66,7 @@ export default {
             default: true
         },
         groupClass: {
-            default: 'input-group'
+            default: 'mb-3'
         },
         type: {
             default: 'text',
