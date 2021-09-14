@@ -4,6 +4,10 @@
             <slot></slot>
         </label>
 
+        <span class="input-group-text" :id="modelValue">
+        <slot name="prepend"></slot>
+        </span>
+
         <input
             :id="modelValue"
             v-bind="{ ...$attrs, class: null }"
@@ -13,7 +17,14 @@
             :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)" ref="input"/>
         <div v-if="error" class="invalid-feedback">{{ error }}</div>
+
+        <span class="input-group-text" :id="modelValue">
+        <slot name="append"></slot>
+        </span>
+
     </div>
+
+    <slot name="prepend"></slot>
 
     <input
         v-else
@@ -24,6 +35,9 @@
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
         ref="input"/>
+
+    <slot name="append"></slot>
+
 </template>
 
 
