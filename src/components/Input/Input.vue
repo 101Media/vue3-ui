@@ -4,6 +4,10 @@
             <slot></slot>
         </label>
 
+        <span class="input-group-text" v-if="!!($slots.prepend)">
+        <slot name="prepend"></slot>
+        </span>
+
         <input
             :id="modelValue"
             v-bind="{ ...$attrs, class: null }"
@@ -13,17 +17,27 @@
             :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)" ref="input"/>
         <div v-if="error" class="invalid-feedback">{{ error }}</div>
+
+        <span class="input-group-text" v-if="!!($slots.prepend)">
+        <slot name="append"></slot>
+        </span>
+
     </div>
 
-    <input
-        v-else
-        :id="modelValue"
-        v-bind="{ ...$attrs, class: null }"
-        :class="{ 'is-invalid': error }"
-        :type="type" class="form-control"
-        :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
-        ref="input"/>
+    <div v-else>
+
+        <slot name="prepend"></slot>
+        <input
+            :id="modelValue"
+            v-bind="{ ...$attrs, class: null }"
+            :class="{ 'is-invalid': error }"
+            :type="type" class="form-control"
+            :value="modelValue"
+            @input="$emit('update:modelValue', $event.target.value)"
+            ref="input"/>
+        <slot name="append"></slot>
+    </div>
+
 </template>
 
 
@@ -52,7 +66,7 @@ export default {
             default: true
         },
         groupClass: {
-            default: 'input-group'
+            default: 'mb-3'
         },
         type: {
             default: 'text',

@@ -1,6 +1,16 @@
 <template>
     <div class="form-check" :class="`${formClass} ${switches ? 'form-switch' : ''} `">
+
+        <span class="input-group-text" v-if="!!($slotes.prepend)">
+        <slot name="prepend"></slot>
+        </span>
+
         <input class="form-check-input" type="checkbox" value="" :id="id" :value="value" v-model="proxyChecked" v-bind="$attrs">
+
+        <span class="input-group-text" v-if="!!($slotes.append)">
+        <slot name="append"></slot>
+        </span>
+
         <label class="form-check-label" :for="id">
             <slot></slot>
         </label>
@@ -30,7 +40,7 @@ export default {
         },
         formClass: {
             type: String,
-            default: '',
+            default: 'mb-3',
         }
     },
     computed: {
