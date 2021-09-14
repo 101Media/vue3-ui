@@ -24,19 +24,19 @@
 
     </div>
 
-    <slot name="prepend"></slot>
+    <div v-else>
 
-    <input
-        v-else
-        :id="modelValue"
-        v-bind="{ ...$attrs, class: null }"
-        :class="{ 'is-invalid': error }"
-        :type="type" class="form-control"
-        :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
-        ref="input"/>
-
-    <slot name="append"></slot>
+        <slot name="prepend"></slot>
+        <input
+            :id="modelValue"
+            v-bind="{ ...$attrs, class: null }"
+            :class="{ 'is-invalid': error }"
+            :type="type" class="form-control"
+            :value="modelValue"
+            @input="$emit('update:modelValue', $event.target.value)"
+            ref="input"/>
+        <slot name="append"></slot>
+    </div>
 
 </template>
 
