@@ -1,6 +1,19 @@
-# Vue3-UI
+# Vue3-UI 
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/@101media/vue3-ui" title="Version" target="_blank" rel="noopener noreferrer">
+    <img alt="npm (tag)" src="https://img.shields.io/npm/v/@101media/vue3-ui">
+  </a>
+  <a href="https://www.npmjs.com/package/@101media/vue3-ui" title="License" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/npm/l/@101media/vue3-ui" alt="License">
+  </a>
+  <a href="https://github.com/vueup/vue-quill" title="Last commit" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/github/last-commit/101media/vue3-ui?logo=github" alt="Last commit">
+  </a>
+</p>
 
 Vue3-UI is a package that implements some default UI elements for Bootstrap 5.
+
 
 ## Installation
 
