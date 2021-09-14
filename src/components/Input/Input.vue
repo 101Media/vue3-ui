@@ -18,7 +18,7 @@
             @input="$emit('update:modelValue', $event.target.value)" ref="input"/>
         <div v-if="error" class="invalid-feedback">{{ error }}</div>
 
-        <span class="input-group-text" v-if="!!($slots.prepend)">
+        <span class="input-group-text" v-if="!!($slots.append)">
         <slot name="append"></slot>
         </span>
 
