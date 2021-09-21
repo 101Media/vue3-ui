@@ -1,6 +1,6 @@
 <template>
     <div :class="block ? 'd-grid gap-2' : ''">
-        <button class="btn" :class="class" :type="type" v-bind="$attrs">
+        <button class="btn" :class="class" :type="type">
             <slot/>
         </button>
     </div>

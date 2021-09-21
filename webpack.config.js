@@ -1,9 +1,11 @@
 const path = require('path');
-const webpack = require("webpack");
 
 module.exports = {
     mode: 'production',
     entry: './src/index.js',
+    optimization: {
+        usedExports: true,
+    },
     output: {
         path: path.resolve('dist'),
         filename: 'ui.js',
