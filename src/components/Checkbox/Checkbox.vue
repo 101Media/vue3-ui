@@ -1,13 +1,13 @@
 <template>
     <div class="form-check" :class="`${formClass} ${switches ? 'form-switch' : ''} `">
 
-        <span class="input-group-text" v-if="!!($slotes.prepend)">
+        <span class="input-group-text" v-if="!!($slots.prepend)">
         <slot name="prepend"></slot>
         </span>
 
         <input class="form-check-input" type="checkbox" value="" :id="id" :value="value" v-model="proxyChecked" v-bind="$attrs">
 
-        <span class="input-group-text" v-if="!!($slotes.append)">
+        <span class="input-group-text" v-if="!!($slots.append)">
         <slot name="append"></slot>
         </span>
 
@@ -48,7 +48,6 @@ export default {
             get() {
                 return this.checked;
             },
-
             set(val) {
                 this.$emit("update:checked", val);
             },

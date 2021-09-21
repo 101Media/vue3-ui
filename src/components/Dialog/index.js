@@ -21,7 +21,7 @@ function open(options) {
             }
         });
 
-        const props = merge(defaultOptions, options);
+        const props = merge(defaultProps, options);
 
         let DialogComponent = createApp(Dialog, props)
 
