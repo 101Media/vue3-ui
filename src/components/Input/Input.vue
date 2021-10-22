@@ -4,29 +4,30 @@
             <slot></slot>
         </label>
 
+        <div :class="(!!($slots.prepend ) || !!($slots.append)) ? 'input-group' : ''">
+
         <span class="input-group-text" v-if="!!($slots.prepend)">
         <slot name="prepend"></slot>
         </span>
 
-        <input
-            :id="modelValue"
-            v-bind="{ ...$attrs, class: null }"
-            :class="{ 'is-invalid': error }"
-            :type="type"
-            class="form-control"
-            :value="modelValue"
-            @input="$emit('update:modelValue', $event.target.value)" ref="input"/>
-        <div v-if="error" class="invalid-feedback">{{ error }}</div>
+            <input
+                :id="modelValue"
+                v-bind="{ ...$attrs, class: null }"
+                :class="{ 'is-invalid': error }"
+                :type="type"
+                class="form-control"
+                :value="modelValue"
+                @input="$emit('update:modelValue', $event.target.value)" ref="input"/>
+            <div v-if="error" class="invalid-feedback">{{ error }}</div>
 
-        <span class="input-group-text" v-if="!!($slots.append)">
+            <span class="input-group-text" v-if="!!($slots.append)">
         <slot name="append"></slot>
         </span>
+        </div>
 
     </div>
 
     <div v-else>
-
-        <slot name="prepend"></slot>
         <input
             :id="modelValue"
             v-bind="{ ...$attrs, class: null }"
@@ -35,7 +36,6 @@
             :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)"
             ref="input"/>
-        <slot name="append"></slot>
     </div>
 
 </template>

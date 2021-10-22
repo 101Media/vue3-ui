@@ -29,7 +29,6 @@ function open(options) {
         DialogComponent.mount(wrapper);
         document.body.appendChild(wrapper);
     })
-
 }
 
 const DialogProgrammatic = {
