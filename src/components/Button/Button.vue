@@ -1,6 +1,6 @@
 <template>
     <div :class="block ? 'd-grid gap-2' : ''">
-        <button class="btn" :class="class" :type="type">
+        <button class="btn" :class="class" :type="type" @click="$emit('click')">
             <slot/>
         </button>
     </div>
@@ -9,7 +9,8 @@
 <script>
 
 export default {
-    name: 'UButton',
+    name: 'Button',
+    emits: ['click'],
     props: {
         type: {
             default: 'button',

@@ -9,5 +9,5 @@ export default {
 }
 
 export {
-    Input as UInput
+    Input
 }

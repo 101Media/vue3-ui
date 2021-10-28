@@ -6,8 +6,8 @@
     "author": "Tom Hermsen <tom@101media.nl>",
     "license": "MIT",
     "peerDependencies": {
-        "lodash": "^4.17.19",
         "bootstrap": "^5.1.1",
+        "lodash": "^4.17.19",
         "vue": "^3.1.4"
     },
     "files": [
@@ -32,6 +32,9 @@
     ],
     "main": "dist/index.umd.min.js",
     "dependencies": {
+        "@vueform/multiselect": "^2.2.0",
+        "slugify": "^1.6.1",
+        "vue-final-modal": "^3.4.3"
     },
     "scripts": {
         "build": "vue-cli-service build --target lib --name index ./src/index.js",

@@ -37,18 +37,14 @@
             @input="$emit('update:modelValue', $event.target.value)"
             ref="input"/>
     </div>
-
 </template>
 
 
 <script>
 export default {
-    name: 'UInput',
+    name: 'Input',
     props: {
         modelValue: {},
-        id: {
-            default: 'input',
-        },
         class: {
             type: String,
             default: ''
