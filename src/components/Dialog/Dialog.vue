@@ -3,7 +3,8 @@
         <div class="modal-dialog " :class="centered ? 'modal-dialog-centered' : ''">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{ title }}</h5>
+                    <h5 v-if="$slots.title" class="modal-title">{{ title }}</h5>
+                    <slot name="title" v-else></slot>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="this.$emit('confirm', false)"></button>
                 </div>
                 <div class="modal-body" v-html="message"></div>
