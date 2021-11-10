@@ -163,6 +163,34 @@ This is a multiselect with three options
 
 ```
 
+### Textarea
+
+Show a auto resize textarea component.
+
+`String error`
+The error message
+
+`String classList`
+The class
+
+`Number minHeight`
+The minimum height of the textarea
+
+`Number maxHeight`
+The maximum height of the textarea
+
+`String mode`
+The type of input, options are `single`, `multiple`, `tags`
+
+```vue
+
+<MultiSelect v-model="form.multiselect" :options="{1: 'first', 2:'second', 3: 'third' }">
+This is a multiselect with three options
+</MultiSelect>
+
+
+```
+
 ## Credits
 
 Vue3-UI is inspired by [Buefy](https://github.com/buefy/buefy).
