@@ -2,8 +2,8 @@
     <div id="confirm-modal" class="modal fade show" tabindex="-1">
         <div class="modal-dialog " :class="centered ? 'modal-dialog-centered' : ''">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 v-if="$slots.title" class="modal-title">{{ title }}</h5>
+                <div :class="headerClass">
+                    <h5 v-if="!$slots.title" :class="headerTitleClass">{{ title }}</h5>
                     <slot name="title" v-else></slot>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="this.$emit('confirm', false)"></button>
                 </div>
@@ -57,6 +57,14 @@ export default {
         canCancel: {
             type: Boolean,
             default: true,
+        },
+        headerTitleClass: {
+            type: String,
+            default: 'modal-title',
+        },
+        headerClass: {
+            type: String,
+            default: 'modal-header',
         },
         centered: {
             type: Boolean,

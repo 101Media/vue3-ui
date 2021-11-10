@@ -18,7 +18,6 @@ Vue3-UI is a package that implements some default UI elements for Bootstrap 5.
 
 Using npm:
 
-
 ```bash
 $ npm install @101media/vue3-ui
 ```
@@ -192,6 +191,12 @@ The text of the cancel button
 `String canCancel`
 Whether the cancel button if shown or not
 *_default is on alert is false_*
+
+`String headerClass`
+The header class
+
+`String headerTitleClass`
+The header title class
 
 ## Credits
 
