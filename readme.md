@@ -34,6 +34,63 @@ Using yarn:
 $ yarn add @101media/vue3-ui
 ```
 
+## Configuration
+
+```javascript
+import Ui from "@101media/vue3-ui"
+
+const UiConfig = {
+    UInput:       {
+// groupClass: "mb-3",
+// class :'',
+// label: '',
+// error : '',
+// group: '',
+// type : '',
+// required: false,
+    },
+    UCheckbox:    {
+// id:        "",
+// switches:  false,
+// error:     "",
+// checked:   false,
+// value:     "",
+// formClass: "",
+    },
+    UDragDrop:    {
+// groupClass : '',
+// class: '',
+// accept: '',
+// error : '',
+    },
+    UMultiSelect: {
+// group: false,
+// groupClass: '',
+// class: '',
+// accept: '',
+// error: '',
+    },
+    URadio:       {
+// class: '',
+// value: '',
+// label: '',
+// error : '',
+// button : false,
+// groupClass: '',
+// formClass: '',
+    },
+    UTextArea:    {
+// autosize: true,
+// minHeight: null,
+// maxHeight: null,
+// error : '',
+// classList : '',
+    },
+}
+
+app.use(UI, UiConfig)
+```
+
 ## Usage
 
 ```js

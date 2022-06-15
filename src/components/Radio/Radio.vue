@@ -11,7 +11,7 @@
 import slugify from 'slugify';
 
 export default {
-    name: 'Radio',
+    name: 'URadio',
     emits: ['update:modelValue'],
     model: {
         prop: 'modelValue',

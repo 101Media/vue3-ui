@@ -1,6 +1,6 @@
 <template>
-    <a href="#" :class="groupClass" id="dropzone">
-        <div ref="dropArea" :class="class" @dragover.prevent="dragover"
+    <a href="#" :class="groupClass" id="dropzone" class="h-100" style="border: 2px dashed #12263f;border-radius: .375rem; ">
+        <div ref="dropArea" v-bind="{ ...$attrs, class: null }" @dragover.prevent="dragover"
              @dragleave.prevent="dragleave" @drop.prevent="drop" @click="$refs.file.click()">
             <slot></slot>
 
@@ -12,28 +12,28 @@
 
 <script>
 export default {
-    name: 'DragDrop',
-    emits: ['update:modelValue', 'change'],
+    name:  "UDragDrop",
+    emits: ["update:modelValue", "change"],
     props: {
         modelValue: {
-            type: File,
+            type:    File,
             default: null,
         },
         groupClass: {
-            default: 'mb-3'
+            default: "mb-3",
         },
-        class: {
-            type: String,
-            default: 'form-group d-flex flex-column position-relative'
+        class:      {
+            type:    String,
+            default: "form-group d-flex flex-column position-relative",
         },
-        accept: {
-            type: String,
-            default: '',
+        accept:     {
+            type:    String,
+            default: "",
         },
-        error: {
-            type: String,
-            default: '',
-        }
+        error:      {
+            type:    String,
+            default: "",
+        },
     },
     data() {
         return {
@@ -42,31 +42,21 @@ export default {
     },
     methods: {
         onChange() {
-            this.file = [...this.$refs.file.files][0];
-            this.$emit('update:modelValue', this.file);
-            this.$emit('change', this.file);
+            this.file = [...this.$refs.file.files][0]
+            this.$emit("update:modelValue", this.file)
+            this.$emit("change", this.file)
         },
         dragover(event) {
-            event.preventDefault();
+            event.preventDefault()
         },
         dragleave(event) {
-            event.preventDefault();
+            event.preventDefault()
         },
         drop(event) {
-            event.preventDefault();
-            this.$refs.file.files = event.dataTransfer.files;
-            this.onChange();
+            event.preventDefault()
+            this.$refs.file.files = event.dataTransfer.files
+            this.onChange()
         },
-    }
+    },
 }
 </script>
-
-<style lang="scss" scoped>
-#dropzone {
-    .form-group {
-        height: 100%;
-        border-radius: .375rem;
-        border: 2px dashed #12263f;
-    }
-}
-</style>

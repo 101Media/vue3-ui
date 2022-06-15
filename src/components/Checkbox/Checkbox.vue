@@ -13,7 +13,7 @@
 
 <script>
 export default {
-    name: 'Checkbox',
+    name: 'UCheckbox',
     emits: ['update:checked'],
     props: {
         id: {

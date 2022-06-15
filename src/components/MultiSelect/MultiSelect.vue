@@ -1,57 +1,65 @@
 <template>
     <div class="form-group" v-if="group">
-        <label class="form-label" @click="focus">
-            <slot></slot>
-        </label>
-        <VueFormMultiselect :value="modelValue" @change="(val) => $emit('update:modelValue', val)" :options="options" :mode="mode"
-                            :class="{ 'is-invalid': error }"
-                            v-bind="$attrs" ref="input"/>
+        <label class="form-label" @click="focus">{{ label }}</label>
+        <Multiselect v-model="modelValue" @change="(val) => $emit('update:modelValue', val)" :options="options" :label="optionLabel" :mode="mode"
+                     :class="{ 'is-invalid': error }" v-bind="$attrs"
+                     ref="input">
+            <template v-for="(_, slot) of $slots" v-slot:[slot]="scope">
+                <slot :name="slot" v-bind="scope"/>
+            </template>
+        </Multiselect>
         <div v-if="error" class="invalid-feedback">{{ error }}</div>
     </div>
-
-    <VueFormMultiselect v-else :value="modelValue" @change="(val) => $emit('update:modelValue', val)" :options="options" :mode="mode"
-                        :class="{ 'is-invalid': error }"
-                        v-bind="$attrs" ref="input"/>
+    <Multiselect v-else v-model="modelValue" @change="(val) => $emit('update:modelValue', val)" :options="options" :label="optionLabel" :mode="mode"
+                 :class="{ 'is-invalid': error }" v-bind="$attrs"
+                 ref="input">
+        <template v-for="(_, slot) of $slots" v-slot:[slot]="scope">
+            <slot :name="slot" v-bind="scope"/>
+        </template>
+    </Multiselect>
 </template>
 
 <script>
-import VueFormMultiselect from "@vueform/multiselect";
+import Multiselect from "@vueform/multiselect"
 
 export default {
-    name: 'MultiSelect',
+    name:       "UMultiSelect",
     components: {
-        VueFormMultiselect,
+        Multiselect,
     },
+
     inheritAttrs: false,
-    emits: ["update:modelValue", "change"],
+
     props: {
-        modelValue: {
-            type: String,
-            default: '',
-        },
-        value: {
-            type: String,
-            default: undefined,
-        },
-        group: {
-            type: Boolean,
+        group:       {
+            type:    Boolean,
             default: true,
         },
-        mode: {
-            type: String,
+        mode:        {
+            type:    String,
             default: "single",
         },
-        options: {
+        options:     {
             type: [Object, Array],
         },
-        label: String,
-        error: String,
+        modelValue:  {
+            type: [String, Number, Array],
+        },
+        label:       String,
+        optionLabel: {
+            type:    String,
+            default: "label",
+        },
+        error:       String,
     },
+
+    emits: ["update:modelValue"],
+
     methods: {
         focus() {
-            this.$refs.input.focus();
+            this.$refs.input.focus()
         },
     },
-};
+}
 </script>
 

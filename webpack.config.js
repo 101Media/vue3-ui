@@ -1,25 +1,25 @@
-const path = require('path');
+const path = require("path")
 
 module.exports = {
-    mode: 'production',
-    entry: './src/index.js',
+    mode:         "production",
+    entry:        "./src/index.js",
     optimization: {
         usedExports: true,
     },
-    output: {
-        path: path.resolve('dist'),
-        filename: 'ui.js',
+    output:       {
+        path:     path.resolve("dist"),
+        filename: "ui.js",
     },
-    module: {
+    module:       {
         rules: [
             {
-                test: /\.js?$/,
+                test:    /\.js?$/,
                 exclude: /(node_modules)/,
-                use: 'babel-loader',
+                use:     "babel-loader",
             },
         ],
     },
-    resolve: {
-        extensions: ['.js', '.vue'],
+    resolve:      {
+        extensions: [".js", ".vue"],
     },
-};
+}

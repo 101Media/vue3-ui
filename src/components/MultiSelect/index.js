@@ -9,5 +9,5 @@ export default {
 }
 
 export {
-    MultiSelect
+    MultiSelect as UMultiSelect
 }

@@ -25,12 +25,12 @@
 </template>
 
 <script>
-import VueFinalModal from "vue-final-modal";
+import VueFinalModal from "vue-final-modal"
 
 export default {
-    name: 'DefaultModal',
+    name:         "UModal",
     inheritAttrs: false,
-    components: {VueFinalModal},
-    emits: ["cancel", "confirm"],
-};
+    components:   {VueFinalModal},
+    emits:        ["cancel", "confirm"],
+}
 </script>

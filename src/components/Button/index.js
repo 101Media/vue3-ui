@@ -9,5 +9,5 @@ export default {
 }
 
 export {
-    Button
+    Button as UButton
 }

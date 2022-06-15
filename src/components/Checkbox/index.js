@@ -9,5 +9,5 @@ export default {
 }
 
 export {
-    Checkbox
+    Checkbox as UCheckbox
 }

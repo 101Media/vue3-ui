@@ -9,5 +9,5 @@ export default {
 }
 
 export {
-    Radio
+    Radio as URadio
 }

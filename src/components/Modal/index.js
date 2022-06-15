@@ -11,5 +11,5 @@ export default {
 }
 
 export {
-    DefaultModal
+    DefaultModal as UModal
 }

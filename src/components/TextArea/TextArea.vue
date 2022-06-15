@@ -18,7 +18,7 @@
 </template>
 <script>
 export default {
-    name: 'TextArea',
+    name: 'UTextArea',
     props: {
         modelValue: {
             type: [String, Number],

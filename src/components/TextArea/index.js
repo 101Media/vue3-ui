@@ -9,5 +9,5 @@ export default {
 }
 
 export {
-    TextArea
+    TextArea as UTextArea
 }

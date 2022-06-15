@@ -1,6 +1,6 @@
 <template>
     <div :class="block ? 'd-grid gap-2' : ''">
-        <button class="btn" :class="class" :type="type" @click="$emit('click')">
+        <button class="btn" v-bind="{ ...$attrs, class: null }" :type="type" @click="$emit('click')">
             <slot/>
         </button>
     </div>
@@ -9,21 +9,21 @@
 <script>
 
 export default {
-    name: 'Button',
-    emits: ['click'],
+    name:  "UButton",
+    emits: ["click"],
     props: {
-        type: {
-            default: 'button',
-            type: String,
+        type:  {
+            default: "button",
+            type:    String,
         },
         class: {
-            default: 'btn-primary',
+            default:  "btn-primary",
             required: false,
-            type: String,
+            type:     String,
         },
         block: {
             default: false,
-            type: Boolean
+            type:    Boolean,
         },
     },
 }

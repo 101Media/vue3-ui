@@ -9,5 +9,5 @@ export default {
 }
 
 export {
-    DragDrop
+    DragDrop as UDragDrop
 }
