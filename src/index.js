@@ -1,23 +1,23 @@
-import * as components from './components';
-import {getOptions, Programmatic as ConfigProgrammatic, setOptions, setVueInstance} from './utils/config'
-import {registerComponentProgrammatic, registerPlugin} from "./utils/plugin";
-import {merge} from "lodash";
-
+import * as components from "./components"
+import {getOptions, Programmatic as ConfigProgrammatic, setOptions, setVueInstance} from "./utils/config"
+import {registerComponentProgrammatic, registerPlugin} from "./utils/plugin"
+import merge from "lodash/merge"
 
 const Ui = {
     install(app, options = {}) {
-        setVueInstance(app);
-        const defaultConfig = getOptions();
+        setVueInstance(app)
+        const defaultConfig = getOptions()
 
-        setOptions(merge(defaultConfig, options));
+        setOptions(merge(defaultConfig, options))
 
         for (const componentKey in components) {
-            registerPlugin(app, components[componentKey]);
+            registerPlugin(app, components[componentKey])
         }
 
-        registerComponentProgrammatic(app, 'config', ConfigProgrammatic)
-    }
+        registerComponentProgrammatic(app, "config", ConfigProgrammatic)
+    },
 }
-export default Ui;
-export * from './components'
-export {Plugin as Config} from './utils/config';
+export default Ui
+export * from "./components"
+export {Plugin as Config} from "./utils/config"
+

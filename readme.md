@@ -34,6 +34,63 @@ Using yarn:
 $ yarn add @101media/vue3-ui
 ```
 
+## Configuration
+
+```javascript
+import Ui from "@101media/vue3-ui"
+
+const UiConfig = {
+    UInput:       {
+// groupClass: "mb-3",
+// class :'',
+// label: '',
+// error : '',
+// group: '',
+// type : '',
+// required: false,
+    },
+    UCheckbox:    {
+// id:        "",
+// switches:  false,
+// error:     "",
+// checked:   false,
+// value:     "",
+// formClass: "",
+    },
+    UDragDrop:    {
+// groupClass : '',
+// class: '',
+// accept: '',
+// error : '',
+    },
+    UMultiSelect: {
+// group: false,
+// groupClass: '',
+// class: '',
+// accept: '',
+// error: '',
+    },
+    URadio:       {
+// class: '',
+// value: '',
+// label: '',
+// error : '',
+// button : false,
+// groupClass: '',
+// formClass: '',
+    },
+    UTextArea:    {
+// autosize: true,
+// minHeight: null,
+// maxHeight: null,
+// error : '',
+// classList : '',
+    },
+}
+
+app.use(UI, UiConfig)
+```
+
 ## Usage
 
 ```js
@@ -59,11 +116,7 @@ import {createApp} from 'vue';
 import Ui from "@101media/vue3-ui";
 
 const UiConfig = {
-    dialog: {
-        cancelClass: 'btn-danger',
-        confirmClass: 'btn-success',
-        center: true,
-    }
+    //
 }
 
 const app = createApp({
@@ -90,8 +143,13 @@ The button class
 `Boolean block`
 Whether the button should be displayed as block.
 
-`String text`
-The button text
+`Callable @click`
+On button click event
+
+```vue
+
+<Button type="button" class="btn-secondary" :block="true" @click="test"></Button>
+```
 
 ### Checkbox
 
@@ -131,66 +189,64 @@ The class for the form group
 `String type`
 The input type
 
-```js
-<UInput placeholder="Example input" v-model="text" id="TextInput1"></UInput>
+```vue
+<Input placeholder="Example input" v-model="text" id="TextInput1"></Input>
 ```
 
-```html
+### MultiSelect
 
-<div class="form-group" placeholder="Example input">
+Show a multiselect component.
 
-    <input placeholder="Example input" class="form-control" type="text">
+This component is a wrapper around [VueForm/Multiselect](https://github.com/vueform/multiselect).
 
-</div>
+`String error`
+The error message
+
+`Boolean group`
+Whether the input should be grouped
+
+`String mode`
+The type of input, options are `single`, `multiple`, `tags`
+
+`Array|Object options`
+An array or object of the selectable options.
+
+```vue
+
+<MultiSelect v-model="form.multiselect" :options="{1: 'first', 2:'second', 3: 'third' }">
+This is a multiselect with three options
+</MultiSelect>
+
+
 ```
 
-### Dialog
+### Textarea
 
-Dialog spawns a modal to confirm an action.
+Show a auto resize textarea component.
 
-Ask user to confirm an action. Promise will only be resolved when user confirms action.
+`String error`
+The error message
 
-So `action.execute()` will only be executed once the user confrims the dialog.
+`String classList`
+The class
 
-#### confirm
+`Number minHeight`
+The minimum height of the textarea
 
-```js
-this.$ui.dialog.confirm({
-    message: 'Continue on this task?',
-}).then(() => action.execute())
+`Number maxHeight`
+The maximum height of the textarea
+
+`String mode`
+The type of input, options are `single`, `multiple`, `tags`
+
+```vue
+
+<MultiSelect v-model="form.multiselect" :options="{1: 'first', 2:'second', 3: 'third' }">
+This is a multiselect with three options
+</MultiSelect>
+
+
 ```
-
-#### Alert
-
-```js
-this.$ui.dialog.alert({
-    message: 'Continue on this task?',
-}).then(() => action.execute())
-```
-
-##### Properties
-
-`String message`
-The message that is shown in the dialog
-
-`String title`
-The title shown in the dialog modal
-
-`String confirmClass`
-The class of the confirm button
-
-`String confirmText`
-The text of the confirm button
-
-`String cancelClass`
-The class of the cancel button
-
-`String cancelText`
-The text of the cancel button
-
-`String canCancel`
-Whether the cancel button if shown or not
-*_default is on alert is false_*
 
 `String headerClass`
 The header class

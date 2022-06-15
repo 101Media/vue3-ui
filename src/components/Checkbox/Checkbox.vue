@@ -1,19 +1,13 @@
 <template>
     <div class="form-check" :class="`${formClass} ${switches ? 'form-switch' : ''} `">
-
-        <span class="input-group-text" v-if="!!($slots.prepend)">
-        <slot name="prepend"></slot>
-        </span>
-
-        <input class="form-check-input" type="checkbox" value="" :id="id" :value="value" v-model="proxyChecked" v-bind="$attrs">
-
-        <span class="input-group-text" v-if="!!($slots.append)">
-        <slot name="append"></slot>
-        </span>
+        <input :class="{is_invalid: this.error, error}" class="form-check-input" type="checkbox" :id="id" v-model="proxyChecked" v-bind="$attrs"
+               @change="$emit('change')">
 
         <label class="form-check-label" :for="id">
             <slot></slot>
         </label>
+
+        <div class="d-block invalid-feedback" v-if="error">{{ error }}</div>
     </div>
 </template>
 
@@ -30,6 +24,10 @@ export default {
         switches: {
             default: false,
             type: Boolean,
+        },
+        error: {
+            type: String,
+            default: '',
         },
         checked: {
             type: [Array, Boolean],
@@ -53,5 +51,8 @@ export default {
             },
         },
     },
+    mounted() {
+        console.log(this.value);
+    }
 }
 </script>
